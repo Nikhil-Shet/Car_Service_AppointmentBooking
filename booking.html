@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Service</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Book a Car Service</h1>
+        <form id="bookingForm">
+            <label for="customerName">Customer Name</label>
+            <input type="text" id="customerName" placeholder="Enter your name" required>
+
+            <label for="vehicleModel">Vehicle Model</label>
+            <input type="text" id="vehicleModel" placeholder="Enter vehicle model" required>
+
+            <label for="serviceType">Service Type</label>
+            <select id="serviceType" required>
+                <option value="GeneralService">General Service</option>
+                <option value="OilChange">Oil Change</option>
+                <option value="BrakeService">Brake Service</option>
+                <option value="BatteryCheck">Battery Check</option>
+            </select>
+
+            <label for="serviceDate">Service Date</label>
+            <input type="date" id="serviceDate" required>
+
+            <label for="description">Additional Notes</label>
+            <textarea id="description" placeholder="Any additional notes"></textarea>
+
+            <button type="submit">Book Service</button>
+        </form>
+
+        <h2>Filter Your Booking Data</h2><label for="filterDate">Filter by Date:</label>
+
+        <div class="form" > 
+            <input type="date" id="filterDate">
+            <button id="filterButton">Filter</button>
+        </div>
+
+        <p>Total Bookings: <span id="totalCount">0</span></p>
+        <p>Filtered Bookings: <span id="filteredCount">0</span></p>
+
+        <h2>Your Bookings</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Vehicle Model</th>
+                    <th>Service Type</th>
+                    <th>Service Date</th>
+                    <th>Users</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="bookingList"></tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

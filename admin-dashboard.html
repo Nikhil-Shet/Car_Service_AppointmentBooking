@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+        <h2>All User Booking Data</h2>
+        <div class="form">
+            <label for="filterDate">Filter by Date:</label>
+            <input type="date" id="filterDate">
+            <button id="filterButton">Filter</button>
+            <button id="resetFilter">Reset</button>
+        </div>
+        <p>Total Bookings: <span id="totalCount">0</span></p>
+        <p>Filtered Bookings: <span id="filteredCount">0</span></p>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Customer Name</th>
+                    <th>Vehicle Model</th>
+                    <th>Service Type</th>
+                    <th>Service Date</th>
+                </tr>
+            </thead>
+            <tbody id="bookingList"></tbody>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (localStorage.getItem("loggedInUser") !== "admin") {
+                alert("Access Denied!");
+                window.location.href = "login.html";
+            }
+
+            const loadBookings = () => JSON.parse(localStorage.getItem("bookings")) || [];
+            const allBookings = loadBookings();
+
+            const displayBookings = (bookings) => {
+                const bookingList = document.getElementById("bookingList");
+                bookingList.innerHTML = bookings.map(booking => `
+                    <tr>
+                        <td>${booking.username}</td>
+                        <td>${booking.customerName}</td>
+                        <td>${booking.vehicleModel}</td>
+                        <td>${booking.serviceType}</td>
+                        <td>${booking.serviceDate}</td>
+                    </tr>
+                `).join("");
+                document.getElementById("totalCount").textContent = allBookings.length;
+                document.getElementById("filteredCount").textContent = bookings.length;
+            };
+
+            displayBookings(allBookings);
+
+            document.getElementById("filterButton").addEventListener("click", () => {
+                const selectedDate = document.getElementById("filterDate").value;
+                if (!selectedDate) return alert("Please select a date to filter.");
+                displayBookings(allBookings.filter(booking => booking.serviceDate === selectedDate));
+            });
+
+            document.getElementById("resetFilter").addEventListener("click", () => {
+                document.getElementById("filterDate").value = "";
+                displayBookings(allBookings);
+            });
+        });
+    </script>
+</body>
+</html>

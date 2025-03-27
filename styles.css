@@ -1,0 +1,168 @@
+/* General Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  line-height: 1.6;
+  background: url('carbackground.webp') center/cover no-repeat fixed;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 13px;
+  background-color: rgba(0, 0, 0, 0.58);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Typography */
+h1, h2 {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+h1 { font-size: 2.5rem; font-weight: 700; }
+h2 { font-size: 2rem; font-weight: 600; }
+
+/* Buttons */
+button {
+  padding: 12px 24px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+button:hover { background-color: #2980b9; }
+
+#bookAppointmentButton {
+  display: block;
+  margin: 20px auto;
+  background-color: #2ecc71;
+}
+
+#bookAppointmentButton:hover { background-color: #27ae60; }
+
+/* Form Elements */
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+label {
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #ffffff;
+  width: 100%;
+}
+
+input[type="text"], input[type="date"], input[type="password"], select, textarea {
+  width: 24rem;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  font-size: 12px;
+  color: #000000;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+textarea { resize: vertical; height: 100px; }
+
+/* Filter Section */
+.filter-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filter-section button { background-color: #e67e22; }
+.filter-section button:hover { background-color: #d35400; }
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #3498db;
+  color: #fff;
+  font-weight: 600;
+}
+
+tr:hover { background-color: #f1f1f1; }
+
+button.edit-button { background-color: #f1c40f; }
+button.edit-button:hover { background-color: #f39c12; }
+
+button.delete-button { background-color: #e74c3c; }
+button.delete-button:hover { background-color: #c0392b; }
+
+/* Background Overlay */
+body.index-background, body.user_login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+body.index-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: -1;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .container { padding: 15px; }
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+  .filter-section { flex-direction: column; align-items: stretch; }
+  .filter-section button { width: 8rem; }
+}
+
+/* Text Colors */
+span, p { color: white; }

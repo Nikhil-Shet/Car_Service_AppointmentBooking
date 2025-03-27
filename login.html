@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-image: url('carbackground.webp');
+            background-size: cover;
+            background-position: center;
+        }
+        form {
+            max-width: 500px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 5px;
+            text-align: center;
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 0.7rem;
+            border: none;
+        }
+        button {
+            width: 33%;
+            padding: 10px;
+            margin: 1rem;
+            background-color: blue;
+            color: white;
+            border-radius: 0.5rem;
+            border: none;
+        }
+        h2 {
+            color: #f1eaea;
+            text-align: center;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="user_login">
+        <h2>User Login</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Enter Username" required>
+            <input type="password" id="password" placeholder="Enter Password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // user credentials
+            const users = [
+                { username: "user1", password: "user123", role: "user" },
+                { username: "user2", password: "user456", role: "user" },
+                { username: "user3", password: "user789", role: "user" },
+            ];
+
+            const user = users.find(u => u.username === username && u.password === password);
+
+            if (user) {
+                localStorage.setItem("loggedInUser", username);
+                localStorage.setItem("userRole", user.role);
+                alert("Login successful!");
+                window.location.href = "booking.html"; // Redirect to booking page
+            } else {
+                alert("Invalid username or password.");
+            }
+        });
+    </script>
+</body>
+</html>
